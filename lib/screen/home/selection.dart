@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:netflix/constants/colors.dart';
+
 import 'package:netflix/notifiers/valuenotifiers.dart';
 import 'package:netflix/screen/downloads/downloads.dart';
 import 'package:netflix/screen/fastlaugh/fastlaugh.dart';
@@ -9,7 +7,8 @@ import 'package:netflix/screen/home/home.dart';
 import 'package:netflix/screen/new&hot/newandhot.dart';
 import 'package:netflix/screen/search/search.dart';
 
-import '../../functions/trendingRepo.dart';
+import '../../domain/core/constants/colors.dart';
+import '../../services/trendingRepo.dart';
 
 class SelectionPage extends StatelessWidget {
   const SelectionPage({super.key});

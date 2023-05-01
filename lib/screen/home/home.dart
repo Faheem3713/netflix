@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/constants/colors.dart';
-import 'package:netflix/constants/textstyles.dart';
-import 'package:netflix/functions/trendingRepo.dart';
+
+import 'package:netflix/services/trendingRepo.dart';
 import 'package:netflix/screen/common/widgets/icon_text.dart';
 import 'package:netflix/screen/home/mylist.dart';
 import 'package:netflix/screen/home/widgets/number_card.dart';
 
-import '../../functions/apiservices.dart';
+import '../../domain/core/constants/colors.dart';
+import '../../domain/core/constants/textstyles.dart';
+import '../../services/apiservices.dart';
 import 'widgets/card_title.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -21,14 +22,17 @@ class MyHomePage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * .8,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(TrendingRepo
-                                .instance.popularNotifier.value[0]))),
-                  ),
+                  TrendingRepo.instance.popularNotifier.value.isEmpty
+                      ? SizedBox()
+                      : Container(
+                          height: MediaQuery.of(context).size.height * .8,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(ApiEndPoints.imageApi +
+                                      TrendingRepo.instance.popularNotifier
+                                          .value[0].posterPath))),
+                        ),
                   Positioned(
                     bottom: 30,
                     left: 0,
@@ -81,7 +85,11 @@ class MyHomePage extends StatelessWidget {
                   valueListenable: TrendingRepo.instance.popularNotifier,
                   builder: (context, popularMovies, _) {
                     return MainCardTitle(
-                        text: 'Trending Now', image: popularMovies, length: 6);
+                        text: 'Trending Now',
+                        image: TrendingRepo
+                            .instance.trendingNotifier.value.reversed
+                            .toList(),
+                        length: 6);
                   }),
               ValueListenableBuilder(
                   valueListenable: TrendingRepo.instance.topRatedNotifier,

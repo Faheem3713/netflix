@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:netflix/functions/trendingRepo.dart';
+import 'package:netflix/services/trendingRepo.dart';
 import 'package:netflix/screen/home/selection.dart';
 
 class OnBoarding extends StatefulWidget {

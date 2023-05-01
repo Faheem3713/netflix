@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix/constants/colors.dart';
-import 'package:netflix/constants/size.dart';
-import 'package:netflix/constants/textstyles.dart';
-import 'package:netflix/screen/common/widgets/icon_text.dart';
 import 'package:netflix/screen/downloads/downloads.dart';
+import 'package:netflix/screen/new&hot/widgets/every_one_watching.dart';
 
+import '../../domain/core/constants/colors.dart';
 import 'widgets/movie_card_details.dart';
 
 class NewAndHot extends StatelessWidget {
@@ -51,7 +48,9 @@ Widget comingSoonPage() {
   return ListView.separated(
     padding: const EdgeInsets.all(5),
     itemBuilder: (context, index) {
-      return const MovieDetailedCard();
+      return MovieDetailedCard(
+        index: index,
+      );
     },
     separatorBuilder: (context, index) => const SizedBox(
       height: 20,
@@ -61,7 +60,5 @@ Widget comingSoonPage() {
 }
 
 Widget everyoneWatchingPage() {
-  return ListView(
-    children: [],
-  );
+  return EveryOneWatchingCard();
 }

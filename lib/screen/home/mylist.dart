@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:netflix/constants/colors.dart';
-import 'package:netflix/constants/textstyles.dart';
-import 'package:netflix/functions/trendingRepo.dart';
-import 'package:netflix/model/trending.dart';
+import 'package:netflix/services/trendingRepo.dart';
 import 'package:netflix/screen/downloads/downloads.dart';
+
+import '../../domain/core/constants/colors.dart';
+import '../../domain/core/constants/textstyles.dart';
 
 class MyListWidget extends StatelessWidget {
   const MyListWidget({super.key});
@@ -17,19 +15,20 @@ class MyListWidget extends StatelessWidget {
         onPressed: () {
           TrendingRepo.instance.createList();
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       appBar: const PreferredSize(
-        child: AppBarWidget(text: 'MyList'),
         preferredSize: Size.fromHeight(50),
+        child: AppBarWidget(text: 'MyList'),
       ),
       body: ValueListenableBuilder(
           valueListenable: TrendingRepo.instance.myListNotifier,
           builder: (context, myList, _) {
             return ListView.builder(
               itemBuilder: (context, index) => Card(
-                color: Color.fromRGBO(0, 0, 0, 0),
+                color: const Color.fromRGBO(0, 0, 0, 0),
                 child: ListTile(
+                  enabled: true,
                   title: Text(
                     myList[index].name,
                     style: CustomTextStyles.appBarTitleStyle,
@@ -38,7 +37,7 @@ class MyListWidget extends StatelessWidget {
                       onPressed: () {
                         TrendingRepo.instance.deleteList(myList[index].id);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.delete,
                         color: CustomColors.white,
                       )),

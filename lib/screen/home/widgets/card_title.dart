@@ -1,10 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:netflix/functions/apiservices.dart';
-import 'package:netflix/functions/trendingRepo.dart';
-
-import '../../../constants/textstyles.dart';
+import 'package:netflix/services/apiservices.dart';
+import 'package:netflix/services/trendingRepo.dart';
+import '../../../domain/core/constants/textstyles.dart';
 
 class MainCardTitle extends StatelessWidget {
   const MainCardTitle(

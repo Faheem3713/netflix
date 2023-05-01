@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/constants/colors.dart';
+
+import '../../../domain/core/constants/colors.dart';
 
 class IconText extends StatelessWidget {
   const IconText(
@@ -13,7 +14,7 @@ class IconText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: TextButton(
         style: TextButton.styleFrom(foregroundColor: CustomColors.white),
         onPressed: onPressed,
@@ -22,8 +23,12 @@ class IconText extends StatelessWidget {
             Icon(
               shadows: const [Shadow(color: Colors.black, blurRadius: 20.0)],
               icon,
+              size: 20,
             ),
-            Text(text)
+            Text(
+              text,
+              style: TextStyle(fontSize: 12),
+            )
           ],
         ),
       ),
